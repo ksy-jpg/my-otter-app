@@ -16,10 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
         env:
           VITE_API_KEY: ${{ secrets.API_KEY }}
       - name: Setup Pages
